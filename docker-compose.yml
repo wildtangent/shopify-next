@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  db_development:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shopify_next_development
+    volumes:
+      - ./docker/data/postgres-data/development:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  db_test:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shopify_next_test
+    volumes:
+      - ./docker/data/postgres-data/test:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  pgadmin4:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: joe@authomedia.co.uk
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: always
+    ports:
+      - 8080:80
