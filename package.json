@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "NODE_ENV=test jest --watch --coverage",
+    "db:push": "prisma db push",
+    "db:seed": "prisma db seed",
     "cypress:open": "NODE_ENV=test cypress open"
   },
   "dependencies": {
